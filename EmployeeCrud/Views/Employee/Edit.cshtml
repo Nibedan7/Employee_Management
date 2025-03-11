@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using EmployeeCrud.Models.Employee
+@model Employee
+
+
+    <form method="post">
+        <div class="border p-3 mt-4">
+        <div class="mb-3 row">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="Designation"></label>
+            <input asp-for="Designation" class="form-control" />
+            <span asp-validation-for="Designation" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-3 row">
+            <label asp-for="Department"></label>
+            <input asp-for="Department" class="form-control" />
+            <span asp-validation-for="Department" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 row">
+            <label asp-for="Joining_date"></label>
+            <input asp-for="Joining_date" class="form-control" />
+            <span asp-validation-for="Joining_date" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Update</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Employee" asp-action="Index" class="btn btn-outline-secondary form-control">Back to EmployeeList</a>
+            </div>
+        </div>
+
+        </div>
+    </form>
+
+@*     @section Scripts{
+        @{
+            <partial name="_ValidationScriptsPartial.cshtml"/>
+        }
+    } *@
+
+
