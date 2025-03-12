@@ -1,0 +1,93 @@
+﻿@model User
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        /* From Uiverse.io by FahadArnob52539 */
+        .login {
+            max-width: 280px;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        .hader {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+            .hader p {
+                text-align: center;
+                font-size: 18px;
+                font-weight: 400;
+                color: #706b6b;
+            }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+            form input {
+                height: 40px;
+                outline: none;
+                border: 1px solid #cccccc;
+                padding: 10px;
+                font-size: 15px;
+                border-radius: 8px;
+            }
+
+                form input[type="button"] {
+                    background-color: rgba(17, 17, 226, 0.562);
+                    color: #ffffff;
+                    font-size: 17px;
+                }
+
+            form span {
+                text-align: center;
+                font-size: 16px;
+                padding-top: 10px;
+                color: #706b6b;
+            }
+
+                form span a {
+                    text-decoration: none;
+                    color: rgba(36, 36, 207, 0.671);
+                    font-weight: 500;
+                }
+
+    </style>
+</head>
+<body>
+    <!-- From Uiverse.io by FahadArnob52539 -->
+    <div class="login">
+        <div class="hader">
+            <span>Register Here</span>
+        </div>
+        <form method="post">
+            <label asp-for="Name"></label>
+            <input asp-for ="Name"/>
+            <span asp-validation-for="Name"></span>
+
+            <label asp-for="Email"></label>
+            <input  asp-for = "Email" />
+            <span asp-validation-for="Email"></span>
+
+            <label asp-for="Password"></label>
+            <input  asp-for = "Password" />
+            <span asp-validation-for="Password"></span>
+
+            <button asp-controller="Employee" asp-action="Register">SignUp</button>
+            <span> Already a member? <a asp-controller="Employee" asp-action="Login" >Login Here</a></span>
+        </form>
+    </div>
+
+</body>
+</html>

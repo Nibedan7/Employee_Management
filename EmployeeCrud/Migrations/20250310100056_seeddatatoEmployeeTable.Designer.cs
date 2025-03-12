@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeCrud.Migrations
 {
-    [DbContext(typeof(EmployeeDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250310100056_seeddatatoEmployeeTable")]
     partial class seeddatatoEmployeeTable
     {

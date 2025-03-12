@@ -1,8 +1,8 @@
 ﻿@using EmployeeCrud.Models.Employee
 @model Employee
 
-    <form method="post">
-        <div class="border p-3 mt-4">
+<form method="post">
+    <div class="border p-3 mt-4">
         <div class="mb-3 row">
             <label asp-for="Name"></label>
             <input asp-for="Name" class="form-control" />
@@ -32,12 +32,12 @@
                 <button type="submit" class="btn btn-primary form-control">Create</button>
             </div>
             <div class="col-6 col-md-3">
-                <a asp-controller="Employee" asp-action="Index" class="btn btn-outline-secondary form-control">Back to EmployeeList</a>
+                <a asp-controller="Admin" asp-action="Index" class="btn btn-outline-secondary form-control">Back to EmployeeList</a>
             </div>
         </div>
 
-        </div>
-    </form>
+    </div>
+</form>
 
 @*     @section Scripts{
         @{

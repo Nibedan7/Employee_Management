@@ -6,11 +6,6 @@
         <div class="col-6">
             <h2 class="text-primary">Employee List</h2>
         </div>
-        <div class="col-6 text-end">
-            <a asp-controller="Employee" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle-dotted"></i>Create New Employee
-            </a>
-        </div>
     </div>
 </div>
 
@@ -21,7 +16,6 @@
             <th>Designation</th>
             <th>Department</th>
             <th>Joining_Date</th>
-            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -31,17 +25,6 @@
                 <td>@obj.Designation</td>
                 <td>@obj.Department</td>
                 <td>@obj.Joining_date</td>
-
-                <td>
-                    <div class="w-75 btn-group" role="group">
-                        <a asp-controller="Employee" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
-                            <i class="bi bi-pencil-square"></i>Edit
-                        </a>
-                        <a asp-controller="Employee" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
-                            <i class="bi bi-trash-fill"></i>Delete
-                        </a>
-                    </div>
-                </td>
             </tr>
         }
     </tbody>

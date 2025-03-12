@@ -1,14 +1,17 @@
-﻿using EmployeeCrud.Models.Employee;
+﻿using EmployeeCrud.Models;
+using EmployeeCrud.Models.Employee;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeCrud.Data
 {
-    public class EmployeeDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public EmployeeDbContext(DbContextOptions options) : base(options)
+        public ApplicationDbContext(DbContextOptions options) : base(options)
         {
-        }
+        } 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<User> Users {  get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +28,14 @@ namespace EmployeeCrud.Data
                     new Employee { Id = 10, Name = "Henry Walker", Designation = "UI/UX Designer", Department = "Design", Joining_date = new DateOnly(2019, 9, 25) }
 
             );
+
+            modelBuilder.Entity<Admin>().HasData(
+                new Admin { Id = 1,User_name = "nibedan@12",Email = "nibedan1@gmail.com",Password = "Nibedan@12"}
+                );
+
+            modelBuilder.Entity<User>().HasData(
+                new User { Id = 1,Name = "Nibedan",Email = "nibedan2@gmail.com",Password = "Nibe@1000"}
+                );
         }
 
     }

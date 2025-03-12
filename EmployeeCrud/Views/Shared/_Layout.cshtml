@@ -22,17 +22,37 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                          
+                        @* <li class="nav-item"> *@
+                        @*     <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Login">Admin</a> *@
+                        @* </li> *@
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Admin
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-controller="Employee" asp-action="Index">Employee_list</a></li>
-                            </ul>
-                        </li>
+                        @if (Context.Session.GetString("LoggedInAdmin") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="@Url.Action("Logout", "Admin")">Logout</a>
+                            </li>
 
+                        }
+                        @if (Context.Session.GetString("LoggedInUser") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="@Url.Action("Logout", "Employee")">Logout</a>
+                            </li>
 
+                        }
+                        @if (Context.Session.GetString("LoggedInUser") == null && Context.Session.GetString("LoggedInAdmin") == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="@Url.Action("Login", "Admin")">Admin</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="@Url.Action("Login", "Employee")">User</a>
+                            </li>
+
+                        }
+                        
                     </ul>
                 </div>
             </div>
