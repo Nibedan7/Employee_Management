@@ -27,7 +27,19 @@ namespace EmployeeCrud.Controllers
 
             // If logged in, show the employee list
             List<Employee> empobj = _db.Employees.ToList();
-            return View(empobj);
+            var departments = _db.Employees.Select(e => e.Department).Distinct().ToList();
+            return View(departments);
+        }
+
+        public IActionResult Department(string department)
+        {
+            if (HttpContext.Session.GetString("LoggedInAdmin") == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var employeeInDepartment  = _db.Employees.Where(e=>e.Department == department).ToList();
+            return View(employeeInDepartment);
         }
 
 

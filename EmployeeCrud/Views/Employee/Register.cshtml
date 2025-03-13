@@ -5,89 +5,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <style>
-        /* From Uiverse.io by FahadArnob52539 */
-        .login {
-            max-width: 280px;
-            background-color: #ffffff;
-            border-radius: 5px;
+        /* Global Styles */
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Roboto', sans-serif;
         }
 
+        /* Form Container */
+        .login {
+            max-width: 400px;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            margin: auto;
+            margin-top: 80px;
+        }
+
+        /* Header Styles */
         .hader {
             text-align: center;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
         }
 
-            .hader p {
-                text-align: center;
-                font-size: 18px;
-                font-weight: 400;
-                color: #706b6b;
-            }
+        /* Form Labels */
+        form label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+        }
 
+        /* Form Styling */
         form {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 18px;
         }
 
+            /* Input Fields */
             form input {
-                height: 40px;
-                outline: none;
-                border: 1px solid #cccccc;
-                padding: 10px;
-                font-size: 15px;
+                height: 45px;
                 border-radius: 8px;
+                padding: 0 15px;
+                border: 1px solid #cccccc;
+                font-size: 16px;
+                outline: none;
+                transition: border 0.3s ease, box-shadow 0.3s ease;
             }
 
-                form input[type="button"] {
-                    background-color: rgba(17, 17, 226, 0.562);
-                    color: #ffffff;
-                    font-size: 17px;
+                /* Input Focus Effect */
+                form input:focus {
+                    border-color: #0066cc;
+                    box-shadow: 0 0 8px rgba(0, 102, 204, 0.5);
                 }
 
+                /* Submit Button */
+                form input[type="submit"] {
+                    background-color: #0066cc;
+                    color: #ffffff;
+                    border: none;
+                    font-size: 16px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                }
+
+                    /* Button Hover Effect */
+                    form input[type="submit"]:hover {
+                        background-color: #005bb5;
+                    }
+
+            /* Link Styling */
             form span {
+                font-size: 14px;
                 text-align: center;
-                font-size: 16px;
-                padding-top: 10px;
-                color: #706b6b;
+                color: #777;
             }
 
                 form span a {
                     text-decoration: none;
-                    color: rgba(36, 36, 207, 0.671);
-                    font-weight: 500;
+                    color: #0066cc;
+                    font-weight: 600;
                 }
 
+                    /* Link Hover Effect */
+                    form span a:hover {
+                        color: #005bb5;
+                    }
+
+        /* Responsive Design */
+        media (max-width: 576px) {
+            .login
+
+        {
+            padding: 30px;
+            width: 90%;
+        }
+
+        .hader {
+            font-size: 20px;
+        }
+
+        }
     </style>
 </head>
 <body>
-    <!-- From Uiverse.io by FahadArnob52539 -->
+    <!-- Form Container -->
     <div class="login">
         <div class="hader">
             <span>Register Here</span>
         </div>
         <form method="post">
-            <label asp-for="Name"></label>
-            <input asp-for ="Name"/>
-            <span asp-validation-for="Name"></span>
+            <!-- Name Field -->
+            <label for="Name">Full Name</label>
+            <input asp-for="Name" id="Name" type="text" class="form-control">
+            <span asp-validation-for="Name" class="text-danger"></span>
 
-            <label asp-for="Email"></label>
-            <input  asp-for = "Email" />
-            <span asp-validation-for="Email"></span>
+            <!-- Email Field -->
+            <label for="Email">Email Address</label>
+            <input asp-for="Email" id="Email" type="email" class="form-control">
+            <span asp-validation-for="Email" class="text-danger"></span>
 
-            <label asp-for="Password"></label>
-            <input  asp-for = "Password" />
-            <span asp-validation-for="Password"></span>
+            <!-- Password Field -->
+            <label for="Password">Password</label>
+            <input asp-for="Password" id="Password" type="password" class="form-control">
+            <span asp-validation-for="Password" class="text-danger"></span>
 
-            <button asp-controller="Employee" asp-action="Register">SignUp</button>
-            <span> Already a member? <a asp-controller="Employee" asp-action="Login" >Login Here</a></span>
+            <!-- Submit Button -->
+            <input type="submit" value="Sign Up" class="btn btn-primary">
+
+            <!-- Login Link -->
+            <span>Already a member? <a href="@Url.Action("Login", "Employee")">Login Here</a></span>
         </form>
     </div>
 
+    <!-- Bootstrap JS and optional dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

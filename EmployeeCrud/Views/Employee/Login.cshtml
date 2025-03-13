@@ -5,109 +5,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User LogIn</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <style>
-        /* From Uiverse.io by akshat-patel28 */
+        /* Container for the form */
         .form-container {
-            width: 350px;
-            height: 500px;
+            max-width: 400px;
+            margin: auto;
+            padding: 40px;
             background-color: #fff;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            border-radius: 10px;
-            box-sizing: border-box;
-            padding: 20px 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
         }
 
+        /* Title styling */
         .title {
             text-align: center;
-            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-            margin: 10px 0 30px 0;
-            font-size: 28px;
-            font-weight: 800;
+            font-family: 'Roboto', sans-serif;
+            margin-bottom: 30px;
+            font-size: 30px;
+            font-weight: 700;
+            color: #333;
         }
 
+        /* Form container layout */
         .form {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 18px;
-            margin-bottom: 15px;
+            gap: 20px;
         }
 
+        /* Styling for input fields */
         .input {
-            border-radius: 20px;
-            border: 1px solid #c0c0c0;
-            outline: 0 !important;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            padding: 12px 18px;
+            font-size: 16px;
+            outline: none;
             box-sizing: border-box;
-            padding: 12px 15px;
+            transition: border 0.3s ease;
         }
 
-        .page-link {
-            text-decoration: underline;
-            margin: 0;
-            text-align: end;
-            color: #747474;
-            text-decoration-color: #747474;
-        }
-
-        .page-link-label {
-            cursor: pointer;
-            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-            font-size: 9px;
-            font-weight: 700;
-        }
-
-            .page-link-label:hover {
-                color: #000;
+            /* Focus effect for inputs */
+            .input:focus {
+                border-color: #0066cc;
             }
+
+        /* Styling for error message */
+        .text-danger {
+            font-size: 12px;
+        }
+
+        /* Styling for login button */
+        .form-btn {
+            padding: 12px 18px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            background-color: #0066cc;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+            /* Hover effect for the login button */
+            .form-btn:hover {
+                background-color: #005bb5;
+            }
+
+        /* Register link style */
+        .page-link {
+            text-align: center;
+            display: block;
+            font-size: 14px;
+            color: #555;
+        }
+
+            .page-link:hover {
+                color: #0066cc;
+                text-decoration: underline;
+            }
+
+        /* Styling for the page on small screens */
+        media (max-width: 576px) {
+            .form-container
+
+        {
+            padding: 25px;
+            width: 90%;
+        }
+
+        .title {
+            font-size: 24px;
+        }
 
         .form-btn {
-            padding: 10px 15px;
-            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-            border-radius: 20px;
-            border: 0 !important;
-            outline: 0 !important;
-            background: teal;
-            color: white;
-            cursor: pointer;
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            font-size: 14px;
         }
 
-            .form-btn:active {
-                box-shadow: none;
-            }
-
-        .buttons-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            margin-top: 20px;
-            gap: 15px;
         }
-
     </style>
 </head>
 <body>
-    <!-- From Uiverse.io by akshat-patel28 -->
+    <!-- Form container -->
     <div class="form-container">
         <p class="title">User LogIn</p>
         <form class="form" method="post">
 
-            <label asp-for="Email"></label>
-            <input type="text" class="input" asp-for="Email">
+            <label for="Email" class="form-label"><i class="bi bi-envelope-at-fill"></i> Email</label>
+            <input type="text" class="input" id="Email" name="Email" asp-for="Email">
             <span asp-validation-for="Email" class="text-danger"></span>
 
-            <label asp-for="Password"></label>
-            <input type="password" class="input" asp-for="Password">
+            <label for="Password" class="form-label"><i class="bi bi-lock-fill"></i>Password</label>
+            <input type="password" class="input" id="Password" name="Password" asp-for="Password">
             <span asp-validation-for="Password" class="text-danger"></span>
 
-            <button class="form-btn" asp-controller="Employee" asp-action="Login">Log in</button>
-            <span>
-                Dont have an account?<a asp-controller="Employee" asp-action="Register">Sign Up</a>
-            </span>
+            <button type="submit" class="form-btn">Log in</button>
+
+            <div class="text-center">
+                <span>Don't have an account? <a href="@Url.Action("Register", "Employee")" class="page-link">Sign Up</a></span>
+            </div>
         </form>
     </div>
+
+    <!-- Optional Bootstrap and jQuery scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

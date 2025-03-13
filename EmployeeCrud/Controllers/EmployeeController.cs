@@ -25,8 +25,18 @@ namespace EmployeeCrud.Controllers
             }
             List<Employee> empobj = _db.Employees.ToList();
 
-            //var department = _db.Employees.Select(e => e.Department).Distinct().ToList();
-            return View(empobj);
+            var department= _db.Employees.Select(e => e.Department).Distinct().ToList();
+            return View(department);
+        }
+        public IActionResult Department(string department)
+        {
+            if(HttpContext.Session.GetString("LoggedInUser") == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            var employeeInDepartment = _db.Employees.Where(e => e.Department == department).ToList();
+            return View(employeeInDepartment);
         }
 
         public IActionResult Login()
